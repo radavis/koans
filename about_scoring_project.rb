@@ -30,39 +30,7 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 # Your goal is to write the score method.
 
 def score(dice)
-  result = 0
-  #dice.sort
-
-  # take care of triple dice
-  (1..6).each do |value|
-    if dice.count(value) >= 3
-      result += score_triple_die(value)
-      (1..3).each do 
-        dice.delete_at(dice.index(value)) 
-      end
-    end
-  end
-
-  # tally up individual dice
-  dice.each do |value|
-    result += score_single_die(value)
-  end
-
-  return result
-end
-
-def score_single_die(die)
-  return 100 if die == 1
-  return 50  if die == 5
-  return 0
-end
-
-def score_triple_die(die)
-  if die == 1
-    return 1000
-  else
-    return die * 100
-  end
+  # You need to write this method
 end
 
 class AboutScoringProject < Neo::Koan
@@ -101,6 +69,9 @@ class AboutScoringProject < Neo::Koan
   def test_score_of_mixed_is_sum
     assert_equal 250, score([2,5,2,2,3])
     assert_equal 550, score([5,5,5,5])
+    assert_equal 1100, score([1,1,1,1])
+    assert_equal 1200, score([1,1,1,1,1])
+    assert_equal 1150, score([1,1,1,5,1])
   end
 
 end
