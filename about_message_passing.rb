@@ -122,7 +122,7 @@ class AboutMessagePassing < Neo::Koan
   def test_catching_messages_makes_respond_to_lie
     catcher = AllMessageCatcher.new
 
-    assert_nothing_raised(NoMethodError) do
+    assert_nothing_raised do
       catcher.any_method
     end
     assert_equal __, catcher.respond_to?(:any_method)
